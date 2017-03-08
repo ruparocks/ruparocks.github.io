@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RupaRocks</title>
+    <link>https://ruparocks.github.io/index.xml</link>
+    <description>Recent content on RupaRocks</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 06 Mar 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://ruparocks.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Handling symbols from Salesforce with Angular 2</title>
+      <link>https://ruparocks.github.io/post/symbols-from-salesforce-angular-2/</link>
+      <pubDate>Mon, 06 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://ruparocks.github.io/post/symbols-from-salesforce-angular-2/</guid>
+      <description>
+
+&lt;h3 id=&#34;introduction&#34;&gt;&lt;strong&gt;Introduction&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;I&amp;rsquo;ve been working on a new Angular 2 project that connects to a Salesforce backend. What I have noticed is that Salesforce encodes a few protected symbols for all it&amp;rsquo;s returns from their backend. We needed a way to digest the json back from Salesforce and dncode all the html codes that are returned.&lt;/p&gt;
+
+&lt;h4 id=&#34;first-attempt-failed&#34;&gt;First attempt - FAILED&lt;/h4&gt;
+
+&lt;p&gt;Our first attempt was to test out decodeURIComponent(str: string). We would expect this to decode all the html symbols, but if you check the documentation for it, it is mainly used with URIs and doesn&amp;rsquo;t decode all symbols.&lt;/p&gt;
+
+&lt;h4 id=&#34;second-attempt-suceeded&#34;&gt;Second attempt - SUCEEDED&lt;/h4&gt;
+
+&lt;p&gt;Our second attempt was to use the html evaluator what was built into innerHTML. We previously built an email template preview component, it took an html string and evaluated it into the innerHTML of a div. It was great for taking all symbols and converting them to the appropriate symbols&amp;hellip; so we built a service called decodeHTML(value: any). It uses Angular Renderer and ElementRef.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s out code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import { Injectable, Renderer, ElementRef } from &#39;@angular/core&#39;;
+
+@Injectable()
+export class DecoderService { 
+
+    constructor( private renderer : Renderer, private elementRef : ElementRef ) {
+    }
+
+    decodeHTML(value: any) : any {
+        if (value === undefined) {
+            return &amp;quot;&amp;quot;;
+        }
+        
+        try {
+            let div = this.renderer.createElement(undefined, &amp;quot;div&amp;quot;);
+            this.renderer.setElementProperty(div, &amp;quot;innerHTML&amp;quot;, value);
+            let result = div.innerText;
+            return result;
+        } catch (ex){
+            console.log(ex);
+            return value;
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;This open source code is not gauranteed to work for everyone, please test and see what works for you.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;take-away&#34;&gt;Take Away&lt;/h3&gt;
+
+&lt;p&gt;We created a service that creates a dom element that is never attached to the dom. We used this element to process an encoded string from Salesforce to convert html symbols to actual symbols. This was safer than using innerHTML within our pages and forms, as it could&amp;rsquo;ve allowed for malicious string to trigger the execution of some scripts.&lt;/p&gt;
+
+&lt;p&gt;This is definitely a case that the Angular 2 team should look to solve in the future.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Routing with Angular 2</title>
+      <link>https://ruparocks.github.io/post/routing-with-angular-2/</link>
+      <pubDate>Mon, 06 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://ruparocks.github.io/post/routing-with-angular-2/</guid>
+      <description>
+
+&lt;h3 id=&#34;introduction&#34;&gt;&lt;strong&gt;Introduction&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;This post is a WIP. There are tons of cases that are not covered in this post. Recently, I was faced with the ..&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://ruparocks.github.io/about/</link>
+      <pubDate>Sat, 20 Jun 2015 14:02:37 +0200</pubDate>
+      
+      <guid>https://ruparocks.github.io/about/</guid>
+      <description>
+
+&lt;p&gt;Javascript, Apex, Objective C, Swift, and .NET experience&lt;/p&gt;
+
+&lt;p&gt;Enthusiastic team worker with a exceptional eye for detail with UI/UX experience&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;ios-web-engineer&#34;&gt;iOS / WEB ENGINEER&lt;/h3&gt;
+
+&lt;p&gt;EDUCATION&lt;/p&gt;
+
+&lt;p&gt;Hack Reactor San Francisco, CA 2013
+Hack Reactor Programming Program&lt;/p&gt;
+
+&lt;p&gt;California State University Fullerton, CA 2013
+User Centered Design Certificate&lt;/p&gt;
+
+&lt;p&gt;Loyola Marymount University Los Angeles, CA 2004-2008
+B.A. Degree, Television Production, Business Minor&lt;/p&gt;
+
+&lt;p&gt;EXPERIENCE&lt;/p&gt;
+
+&lt;p&gt;TargetX Oakland, CA 2016-Present
+Software Engineer (formerly Web Developer)&lt;/p&gt;
+
+&lt;p&gt;Focused on web development of new products with Angular 2, Webpack, Sass
+Developing a custom library of components for future products
+Advancing older prodects and building new features&lt;/p&gt;
+
+&lt;p&gt;GreenDot Corporation Palo Alto, CA 2013-2016
+iOS Software Engineer (formerly Web Developer)&lt;/p&gt;
+
+&lt;p&gt;Work on iOS apps for GreenDot, GoBank, and Walmart MoneyCard
+Develop clean code that adheres to our platform standards
+Build communication with other teams in organization to develop
+Built Apple Watch app for our flagship iOS application Developed mobile web application with AngularJS and .NET web API layer&lt;/p&gt;
+
+&lt;p&gt;Securitybase.com Orange, CA 2011-2013
+Frontend Web Developer &amp;amp; Webmaster&lt;/p&gt;
+
+&lt;p&gt;Developing Magento e-commerce websites and update existing content
+Building online business presence through social media marketing, SEO, and SEM
+Capturing detailed product photography
+Improving customer experience and driving online sales&lt;/p&gt;
+
+&lt;p&gt;Rupa Sharma Cerritos, CA 2008-Present
+Freelance/Creative Consultant&lt;/p&gt;
+
+&lt;p&gt;Enhance small businesses through social media marketing and SEM
+Tracking and increasing traffic to websites and improving user experience
+Increase brand recognition and brand value while designing beautiful layouts and graphics
+Design websites and flash banner advertisements that increase CTR, brand recognition and value
+Event Photography Group Los Angeles, CA 2010-2014
+Veteran Photographer&lt;/p&gt;
+
+&lt;p&gt;Sona Enterprises Santa Fe Springs, CA 2008-2010
+In-House Graphic Designer&lt;/p&gt;
+
+&lt;p&gt;Redevelop product packaging line, which lead to an increase in brand value and generate sales
+Design flyers, email blasts/newsletters and stationery to enhance brand image
+Maintain/update server and office computers to reduce down time and server failure
+Dollarstore International Costa Mesa, CA 2007-2008
+Web Designer/Creative Assistant&lt;/p&gt;
+
+&lt;p&gt;Fostered the launch of international spots to promote the franchise
+Facilitated hiring and managing a small work group focused on developing commercials and internet advertisements for the international franchise division
+Redesigned the websites to increase traffic and re-stimulate activity&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
