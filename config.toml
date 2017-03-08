@@ -1,0 +1,55 @@
+# Site settings
+baseurl = "https://ruparocks.github.io/"
+themesDir = "./themes/"
+imagesDir = "./themes/"
+publishDir= "docs"
+languageCode = "en-us"
+title = "RupaRocks"
+theme = "hugo-cactus-theme"
+# Enter your tracking code to enable Google Analytics
+googleAnalytics = ""
+# Disable comments by leaving disqusShortname empty
+disqusShortname = ""
+
+[params]
+	name = "RupaRocks"
+	description = "Github pages site for RupaRocks."
+	bio = "Web/iOS Software Engineer"
+	# Enter optionally your twitter account
+	twitter = "@ruparocks"
+	enableRSS = true
+
+	# Add custom assets with their paths relative to the static folder
+	customCSS = []
+	customJS  = []
+
+	# The variables below are optionally too and can be used to
+	# translate or customize each string of the theme.
+
+	# Navigation links
+	home = ""
+	about = "about"
+	subscribe = ""
+	# Pagination links
+	olderPosts = ""
+	newerPosts = ""
+	readMore = ""
+	copyright = ""
+	# Sharing options and author information in posts
+	aboutAuthor = "Share this post and follow me"
+	tweet = ""
+	share = ""
+	# 404 page
+	title404 = "Oops, something went 404 on us"
+	subtitle404 = "This is embarassing, hopefully we will ahve this resolved soon, otherwise file an issue on my github. Thanks."
+
+	# Choose a font for the social icons in the footer. Either "mono-social" or "font-awesome"
+	iconFont = "mono-social"
+    # The social icons can be styled differently if you use mono as font - circle, rounded, or empty
+    socialIconStyle = "rounded"
+
+# Add additional social link entries underneath
+[social]
+    twitter  = "https://www.twitter.com/ruparocks"
+    github   = "https://www.github.com/ruparocks"
+    linkedin = "https://www.linkedin.com/in/rupasharma1"
